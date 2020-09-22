@@ -1,0 +1,104 @@
+﻿@model TeploServices.Models.Message
+<section class="hero-wrap hero-wrap-2" style="background-image: url(@Url.Content("~/Content/images/bg_1.jpg"));" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <h1 class="mb-2 bread">Контакты</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="/Home/Index">Главная <i class="ion-ios-arrow-forward"></i></a></span> <span>Контакты <i class="ion-ios-arrow-forward"></i></span></p>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
+<section class="ftco-section ftco-no-pt ftco-no-pb contact-section">
+
+    <div class="container ">
+
+
+
+        <form method="post" action="#">
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.Label("ФИО", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SNP, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SNP, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Телефон", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Email", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Дата", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Удобное время", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CallTime, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CallTime, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Текст", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Отправить" class="btn btn-primary py-3 px-5">
+            </div>
+        </form>
+
+
+    </div>
+
+</section>
+
+<section class="ftco-section contact-section">
+    <div class="container">
+        <div class="row d-flex mb-5 contact-info">
+            <div class="col-md-12 mb-4">
+                <h2 class="h4">Контактная информация</h2>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md-3 d-flex">
+                <div class="bg-light d-flex align-self-stretch box p-4">
+                    <p><span>Адрес:</span> Владивосток, Приморский край, Россия, 690011</p>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex">
+                <div class="bg-light d-flex align-self-stretch box p-4">
+                    <p><span>Телефон:</span> <a href="tel://7235 2355 98">+ 7235 2355 98</a></p>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex">
+                <div class="bg-light d-flex align-self-stretch box p-4">
+                    <p><span>Email:</span> <a href="/Home/Index">teploservice@email.com</a></p>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex">
+                <div class="bg-light d-flex align-self-stretch box p-4">
+                    <p><span>Сайт</span> <a href="Главная.html">teploservicsite.com</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

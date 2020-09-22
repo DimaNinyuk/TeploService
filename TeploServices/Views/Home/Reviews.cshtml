@@ -1,0 +1,104 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.IPagedList<TeploServices.Models.Review>
+
+
+
+    <section class="hero-wrap hero-wrap-2" style="background-image: url(@Url.Content("~/Content/images/bg_1.jpg"));" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <h1 class="mb-2 bread">Отзывы</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="/Home/Index">Главная <i class="ion-ios-arrow-forward"></i></a></span> <span>Отзывы <i class="ion-ios-arrow-forward"></i></span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 ftco-animate">
+                    <div class="blog-entry">
+                        <div class="meta-date text-center col-9">
+                            <span class="day">@item.Date.Value.Day</span>
+                            <h3 class="heading">@item.Date.Value.ToString("MMMM") </h3>
+                            <span class="yr">@item.Date.Value.Year</span>
+                        </div>
+
+                        <div class="text pt-4">
+                            <h3 class="heading">@item.SNP</h3>
+                            <p>@item.Text</p>
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+
+
+
+
+        </div>
+        <div class="row no-gutters my-5">
+            <div class="col text-center">
+                <div class="block-27">
+                    @Html.PagedListPager(Model, page => Url.Action("Reviews", new { page }))
+                </div>
+            </div>
+        </div>
+        @*<a class="btn btn-warning" href="~/Home/SendReviews">Предупреждение</a>*@
+    </div>
+</section>
+<br />
+<section class="ftco-section ftco-no-pt ftco-no-pb contact-section">
+    
+
+    <div class="container ">
+        <h3 class="panel-title center">Оставить отзыв</h3>
+        <br />
+
+
+        <form method="post" action="#">
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.Label("ФИО", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.Editor("SNP", new { htmlAttributes = new { @class = "form-control" } })
+
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Телефон", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.Editor("Phone", new { htmlAttributes = new { @class = "form-control" } })
+
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Дата", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.Editor("Date", new { htmlAttributes = new { @class = "form-control" } })
+
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Text", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.Editor("Text", new { htmlAttributes = new { @class = "form-control" } })
+
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Отправить" class="btn btn-primary py-3 px-5">
+            </div>
+        </form>
+
+
+    </div>
+
+</section>

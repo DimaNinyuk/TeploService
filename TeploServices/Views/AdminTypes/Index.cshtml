@@ -1,0 +1,39 @@
+﻿@model IEnumerable<TeploServices.Models.Type>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Типы услуг</h2>
+
+<p>
+    @Html.ActionLink("Добавить новый тип", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Наименование")
+        </th>
+        <th>
+            @Html.DisplayName("Описание")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Text)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.TypesId }) |
+            @Html.ActionLink("Детально", "Details", new { id=item.TypesId }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.TypesId })
+        </td>
+    </tr>
+}
+
+</table>

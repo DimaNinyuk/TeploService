@@ -1,0 +1,68 @@
+﻿@model IEnumerable<TeploServices.Models.Message>
+@using System.ComponentModel.DataAnnotations;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Сообщения</h2>
+
+<p>
+    @*@Html.ActionLink("Добавить новое сообщение", "Create")*@
+</p>
+<table class="table">
+    <tr>
+      
+        <th>
+            @Html.DisplayName("ФИО")
+        </th>
+        <th>
+            
+            @Html.DisplayName("Дата")
+        </th>
+        <th>
+            @Html.DisplayName("Телефон")
+        </th>
+        <th>
+            @Html.DisplayName("Почта")
+        </th>
+        <th>
+            @Html.DisplayName("Текст")
+        </th>
+        <th>
+            @Html.DisplayName("Удобное время")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.SNP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date.Value)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Text)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CallTime)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.MessageId }) |*@
+            @Html.ActionLink("Детально", "Details", new { id=item.MessageId }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.MessageId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<TeploServices.Models.Review>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Отзывы</h2>
+
+<p>
+    @Html.ActionLink("Добавить отзыв", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Почта")
+        </th>
+        <th>
+            @Html.DisplayName("Телефон")
+        </th>
+        <th>
+            @Html.DisplayName("Дата")
+        </th>
+        <th>
+            @Html.DisplayName("Текст")
+        </th>
+        <th>
+            @Html.DisplayName("ФИО")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Text)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SNP)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.ReviewId }) |
+            @Html.ActionLink("Детально", "Details", new { id=item.ReviewId }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.ReviewId })
+        </td>
+    </tr>
+}
+
+</table>

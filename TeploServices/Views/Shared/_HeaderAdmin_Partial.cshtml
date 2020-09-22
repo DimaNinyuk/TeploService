@@ -1,0 +1,53 @@
+﻿<div class="bg-top navbar-light">
+    <div class="container">
+        <div class="row no-gutters d-flex align-items-center align-items-stretch">
+            <div class="col-md-4 d-flex align-items-center py-4">
+                <a class="navbar-brand" href="/Home/Admin"><span class="flaticon-bee mr-1"></span>Теплосервис</a>
+            </div>
+            <div class="col-lg-8 d-block">
+                <div class="row d-flex">
+
+                    <div class="col-md topper d-flex align-items-center align-items-stretch">
+                        <p class="mb-0 d-flex d-block">
+                            @if (Request.IsAuthenticated)
+                            {
+                                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-primary d-flex align-items-center justify-content-center">Выйти</a>
+
+                                }
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Авторизация", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn btn-primary d-flex align-items-center justify-content-center" })
+
+                            }
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container d-flex align-items-center">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a href="/Home/Admin" class="nav-link pl-0">Главная </a></li>
+                <li class="nav-item"><a href="/AdminServices" class="nav-link pl-0">Услуги</a></li>
+                <li class="nav-item"><a href="/AdminTypes/Index" class="nav-link">Тип услуг</a></li>
+                <li class="nav-item"><a href="/AdminReviews/Index" class="nav-link">Отзывы</a></li>
+                <li class="nav-item"><a href="/AdminMessages/Index" class="nav-link">Сообщения</a></li>
+                @*<li class="nav-item"><a href="/Home/Messages" class="nav-link">Пользователи</a></li>*@
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- END nav -->
